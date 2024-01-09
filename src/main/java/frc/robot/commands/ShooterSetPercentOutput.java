@@ -5,11 +5,13 @@ import frc.robot.subsystems.Shooter;
 
 public class ShooterSetPercentOutput extends Command {
   private final Shooter mShooter;
-  private final double mPercentOutput;
+  private final double mTopPercentOutput;
+  private final double mBottomPercentOutput;
 
-  public ShooterSetPercentOutput(Shooter shooter, double percentOutput) {
+  public ShooterSetPercentOutput(Shooter shooter, double topPercentOutput, double bottomPercentOutput) {
     mShooter = shooter;
-    mPercentOutput = percentOutput;
+    mTopPercentOutput = topPercentOutput;
+    mBottomPercentOutput = bottomPercentOutput;
 
     addRequirements(mShooter);
   }
@@ -21,7 +23,7 @@ public class ShooterSetPercentOutput extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mShooter.setPercentOutput(mPercentOutput);
+    mShooter.setPercentOutput(mTopPercentOutput, mBottomPercentOutput);
   }
 
   // Called once the command ends or is interrupted.

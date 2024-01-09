@@ -15,14 +15,14 @@ public final class Constants {
     public static final int CLIMBER_LEFT = 10,
                             CLIMBER_RIGHT = 11,
                             INTAKE = 12,
-                            SHOOTER_TOP = 13,
-                            SHOOTER_BOTTOM = 14,
+                            SHOOTER_BOTTOM = 13,
+                            SHOOTER_TOP = 14,
                             WRIST = 15;
 
-    public static final int WRIST_FORWARD = 0, // PH
-                            WRIST_REVERSE = 1,
-                            FLIPPER_FORWARD = 2,
-                            FLIPPER_REVERSE = 3;
+    public static final int WRIST_FORWARD = 1, // PH
+                            WRIST_REVERSE = 2,
+                            FLIPPER_FORWARD = 3,
+                            FLIPPER_REVERSE = 4;
 
     public static final class Drivetrain {
         public static final String CANIVORE = "77B239C1394C485320202050132018FF";
@@ -89,9 +89,9 @@ public final class Constants {
 
         /* Swerve Profiling Values */
         /** Meters per Second */
-        public static final double maxSpeed = 5.0; // This must be tuned to specific robot
+        public static final double maxSpeed = 4.0; // This must be tuned to specific robot
         /** Radians per Second */
-        public static final double maxAngularVelocity = 10.0; // This must be tuned to specific robot
+        public static final double maxAngularVelocity = 8.0; // This must be tuned to specific robot
 
         /* Neutral Modes */
         public static final NeutralModeValue angleNeutralMode = NeutralModeValue.Brake;
@@ -103,7 +103,7 @@ public final class Constants {
             public static final int driveMotorID = 1;
             public static final int angleMotorID = 5;
             public static final int canCoderID = 15;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(240.117187501); //TODO: This must be tuned to specific robot
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(240.117187501); // This must be tuned to specific robot
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -113,7 +113,7 @@ public final class Constants {
             public static final int driveMotorID = 3;
             public static final int angleMotorID = 7;
             public static final int canCoderID = 17;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(333.6328125); //TODO: This must be tuned to specific robot
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(333.6328125); // This must be tuned to specific robot
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -123,7 +123,7 @@ public final class Constants {
             public static final int driveMotorID = 2;
             public static final int angleMotorID = 6;
             public static final int canCoderID = 16;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(167.34375); //TODO: This must be tuned to specific robot
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(167.34375); // This must be tuned to specific robot
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -133,7 +133,7 @@ public final class Constants {
             public static final int driveMotorID = 4;
             public static final int angleMotorID = 8;
             public static final int canCoderID = 18;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(17.578125); //TODO: This must be tuned to specific robot
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(17.578125); // This must be tuned to specific robot
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }

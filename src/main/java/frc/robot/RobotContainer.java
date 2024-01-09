@@ -1,9 +1,8 @@
 package frc.robot;
 
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ClimberSetPercentOutput;
 import frc.robot.commands.DrivetrainSwerveDrive;
@@ -20,6 +19,7 @@ import frc.robot.subsystems.Wrist;
 
 public class RobotContainer {
   private final CommandXboxController mXbox = new CommandXboxController(0);
+  private final CommandJoystick mJoystick = new CommandJoystick(1);
   
   private final Climber mClimber = new Climber();
   private final Drivetrain mDrivetrain = new Drivetrain();
@@ -31,25 +31,36 @@ public class RobotContainer {
   public RobotContainer() {
     mClimber.setDefaultCommand(new ClimberSetPercentOutput(mClimber, 0.0));
     mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox)); // Uses both sticks and left bumper
-    mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, true));
+    mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, false));
     mIntake.setDefaultCommand(new IntakeSetPercentOutput(mIntake, 0.0));
-    mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0));
+    mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0, 0.0));
     mWrist.setDefaultCommand(new WristSetState(mWrist, true));
 
     configureButtonBindings();
 
-    UsbCamera cam0 = CameraServer.startAutomaticCapture(0);
-		cam0.setResolution(320, 240);
-    cam0.setFPS(10);
+    // UsbCamera cam0 = CameraServer.startAutomaticCapture(0);
+		// cam0.setResolution(320, 240);
+    // cam0.setFPS(10);
   }
 
   private void configureButtonBindings() {
-    mXbox.b().whileTrue(new ShooterSetPercentOutput(mShooter, 1.0));
-    mXbox.x().whileTrue(new ShooterSetPercentOutput(mShooter, -1.0));
-    mXbox.a().whileTrue(new IntakeSetPercentOutput(mIntake, 1));
-    mXbox.y().whileTrue(new IntakeSetPercentOutput(mIntake, -1));
-
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
+
+    mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1.0, 1.0)); // Shooting
+    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.15, 0.35)); // Amp
+    mJoystick.button(7).whileTrue(new ShooterSetPercentOutput(mShooter, -0.3, -0.15)); // Intaking Source
+    mJoystick.button(7).whileTrue(new FlipperSetState(mFlipper, true));
+
+    mJoystick.button(3).whileTrue(new IntakeSetPercentOutput(mIntake, -1.0));
+    mJoystick.button(4).whileTrue(new IntakeSetPercentOutput(mIntake, 1.0));
+
+    mJoystick.button(5).onTrue(new WristSetState(mWrist, true));
+    mJoystick.button(6).onTrue(new WristSetState(mWrist, false));
+
+    mJoystick.button(9).whileTrue(new ClimberSetPercentOutput(mClimber, -0.2));
+    mJoystick.button(10).whileTrue(new ClimberSetPercentOutput(mClimber, 0.2));
+    mJoystick.button(11).whileTrue(new ClimberSetPercentOutput(mClimber, -1.0));
+    mJoystick.button(12).whileTrue(new ClimberSetPercentOutput(mClimber, 1.0));
   }
 
   public Command getAutonomousCommand() {
