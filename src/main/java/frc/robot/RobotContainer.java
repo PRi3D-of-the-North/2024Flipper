@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ClimberSetPercentOutput;
 import frc.robot.commands.DrivetrainSwerveDrive;
@@ -29,7 +30,7 @@ public class RobotContainer {
 
   public RobotContainer() {
     mClimber.setDefaultCommand(new ClimberSetPercentOutput(mClimber, 0.0));
-    mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox));
+    mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox)); // Uses both sticks and left bumper
     mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, true));
     mIntake.setDefaultCommand(new IntakeSetPercentOutput(mIntake, 0.0));
     mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0));
@@ -45,8 +46,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
     mXbox.b().whileTrue(new ShooterSetPercentOutput(mShooter, 1.0));
     mXbox.x().whileTrue(new ShooterSetPercentOutput(mShooter, -1.0));
+    mXbox.a().whileTrue(new IntakeSetPercentOutput(mIntake, 1));
+    mXbox.y().whileTrue(new IntakeSetPercentOutput(mIntake, -1));
 
-    // mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
+    mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
   }
 
   public Command getAutonomousCommand() {
