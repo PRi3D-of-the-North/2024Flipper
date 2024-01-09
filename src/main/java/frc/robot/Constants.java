@@ -19,10 +19,10 @@ public final class Constants {
                             SHOOTER_BOTTOM = 14,
                             WRIST = 15;
 
-    public static final int WRIST_FORWARD = 0, // PH
-                            WRIST_REVERSE = 1,
-                            FLIPPER_FORWARD = 2,
-                            FLIPPER_REVERSE = 3;
+    public static final int WRIST_FORWARD = 1, // PH
+                            WRIST_REVERSE = 2,
+                            FLIPPER_FORWARD = 3,
+                            FLIPPER_REVERSE = 4;
 
     public static final class Drivetrain {
         public static final String CANIVORE = "77B239C1394C485320202050132018FF";
