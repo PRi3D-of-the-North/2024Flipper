@@ -23,7 +23,7 @@ public class Drivetrain extends SubsystemBase {
     public Pigeon2 gyro;
 
     public Drivetrain() {
-        gyro = new Pigeon2(Constants.Drivetrain.PIGEON);
+        gyro = new Pigeon2(Constants.Drivetrain.PIGEON, Constants.Drivetrain.CANIVORE);
         gyro.getConfigurator().apply(new Pigeon2Configuration());
         gyro.setYaw(0);
 
