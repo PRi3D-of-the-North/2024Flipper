@@ -19,9 +19,6 @@ public final class Constants {
                             SHOOTER_BOTTOM = 14,
                             WRIST = 15;
 
-    public static final int ARM_FORWARD_LIMIT = 0, // DIO
-                            ARM_REAR_LIMIT = 1;
-
     public static final int WRIST_FORWARD = 0, // PH
                             WRIST_REVERSE = 1,
                             FLIPPER_FORWARD = 2,
