@@ -15,8 +15,8 @@ public final class Constants {
     public static final int CLIMBER_LEFT = 10,
                             CLIMBER_RIGHT = 11,
                             INTAKE = 12,
-                            SHOOTER_TOP = 14,
                             SHOOTER_BOTTOM = 13,
+                            SHOOTER_TOP = 14,
                             WRIST = 15;
 
     public static final int WRIST_FORWARD = 1, // PH

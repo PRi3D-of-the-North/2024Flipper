@@ -31,7 +31,7 @@ public class RobotContainer {
   public RobotContainer() {
     mClimber.setDefaultCommand(new ClimberSetPercentOutput(mClimber, 0.0));
     mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox)); // Uses both sticks and left bumper
-    mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, true));
+    mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, false));
     mIntake.setDefaultCommand(new IntakeSetPercentOutput(mIntake, 0.0));
     mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0, 0.0));
     mWrist.setDefaultCommand(new WristSetState(mWrist, true));
@@ -46,12 +46,13 @@ public class RobotContainer {
   private void configureButtonBindings() {
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
 
-    mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1.0, 1.0));
-    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.4, 0.2));
-    mJoystick.button(7).whileTrue(new ShooterSetPercentOutput(mShooter, -0.4, -0.2));
+    mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1.0, 1.0)); // Shooting
+    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.15, 0.35)); // Amp
+    mJoystick.button(7).whileTrue(new ShooterSetPercentOutput(mShooter, -0.3, -0.15)); // Intaking Source
+    mJoystick.button(7).whileTrue(new FlipperSetState(mFlipper, true));
 
-    mJoystick.button(3).whileTrue(new IntakeSetPercentOutput(mIntake, -1));
-    mJoystick.button(4).whileTrue(new IntakeSetPercentOutput(mIntake, 1));
+    mJoystick.button(3).whileTrue(new IntakeSetPercentOutput(mIntake, -1.0));
+    mJoystick.button(4).whileTrue(new IntakeSetPercentOutput(mIntake, 1.0));
 
     mJoystick.button(5).onTrue(new WristSetState(mWrist, true));
     mJoystick.button(6).onTrue(new WristSetState(mWrist, false));
@@ -60,9 +61,6 @@ public class RobotContainer {
     mJoystick.button(10).whileTrue(new ClimberSetPercentOutput(mClimber, 0.2));
     mJoystick.button(11).whileTrue(new ClimberSetPercentOutput(mClimber, -1.0));
     mJoystick.button(12).whileTrue(new ClimberSetPercentOutput(mClimber, 1.0));
-
-    mJoystick.povUp().onTrue(new FlipperSetState(mFlipper, false));
-    mJoystick.povDown().onTrue(new FlipperSetState(mFlipper, true));
   }
 
   public Command getAutonomousCommand() {
