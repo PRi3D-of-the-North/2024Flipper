@@ -4,6 +4,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ClimberSetPercentOutput;
 import frc.robot.commands.DrivetrainSwerveDrive;
@@ -20,6 +21,7 @@ import frc.robot.subsystems.Wrist;
 
 public class RobotContainer {
   private final CommandXboxController mXbox = new CommandXboxController(0);
+  private final CommandJoystick mJoystick = new CommandJoystick(1);
   
   private final Climber mClimber = new Climber();
   private final Drivetrain mDrivetrain = new Drivetrain();
@@ -44,12 +46,24 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    mXbox.b().whileTrue(new ShooterSetPercentOutput(mShooter, 1.0));
-    mXbox.x().whileTrue(new ShooterSetPercentOutput(mShooter, -1.0));
-    mXbox.a().whileTrue(new IntakeSetPercentOutput(mIntake, 1));
-    mXbox.y().whileTrue(new IntakeSetPercentOutput(mIntake, -1));
-
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
+    
+    mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1));
+    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.4));
+
+    mJoystick.button(3).whileTrue(new IntakeSetPercentOutput(mIntake, -1));
+    mJoystick.button(4).whileTrue(new IntakeSetPercentOutput(mIntake, 1));
+
+    mJoystick.button(5).onTrue(new WristSetState(mWrist, true));
+    mJoystick.button(6).onTrue(new WristSetState(mWrist, false));
+
+    mJoystick.button(9).whileTrue(new ClimberSetPercentOutput(mClimber, -0.2));
+    mJoystick.button(10).whileTrue(new ClimberSetPercentOutput(mClimber, 0.2));
+    mJoystick.button(11).whileTrue(new ClimberSetPercentOutput(mClimber, 1.0));
+    mJoystick.button(12).whileTrue(new ClimberSetPercentOutput(mClimber, -1.0));
+
+    mJoystick.povUp().onTrue(new FlipperSetState(mFlipper, false));
+    mJoystick.povDown().onTrue(new FlipperSetState(mFlipper, true));
   }
 
   public Command getAutonomousCommand() {
