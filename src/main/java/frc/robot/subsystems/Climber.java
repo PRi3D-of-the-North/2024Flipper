@@ -15,7 +15,7 @@ public class Climber extends SubsystemBase {
     mClimberLeft.getConfigurator().apply(new TalonFXConfiguration());
     mClimberRight.getConfigurator().apply(new TalonFXConfiguration());
     mClimberLeft.setInverted(false);
-    mClimberRight.setInverted(false);
+    mClimberRight.setInverted(true);
     mClimberLeft.setNeutralMode(NeutralModeValue.Brake);
     mClimberRight.setNeutralMode(NeutralModeValue.Brake);
   }

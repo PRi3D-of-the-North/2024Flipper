@@ -1,7 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
@@ -40,9 +38,9 @@ public class RobotContainer {
 
     configureButtonBindings();
 
-    UsbCamera cam0 = CameraServer.startAutomaticCapture(0);
-		cam0.setResolution(320, 240);
-    cam0.setFPS(10);
+    // UsbCamera cam0 = CameraServer.startAutomaticCapture(0);
+		// cam0.setResolution(320, 240);
+    // cam0.setFPS(10);
   }
 
   private void configureButtonBindings() {
