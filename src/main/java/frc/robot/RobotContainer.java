@@ -46,6 +46,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     mXbox.b().whileTrue(new ShooterSetPercentOutput(mShooter, 1.0));
     mXbox.x().whileTrue(new ShooterSetPercentOutput(mShooter, -1.0));
+    mXbox.a().whileTrue(new IntakeSetPercentOutput(mIntake, 1));
+    mXbox.y().whileTrue(new IntakeSetPercentOutput(mIntake, -1));
 
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
   }
