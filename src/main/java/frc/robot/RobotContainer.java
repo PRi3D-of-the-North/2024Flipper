@@ -29,7 +29,7 @@ public class RobotContainer {
 
   public RobotContainer() {
     mClimber.setDefaultCommand(new ClimberSetPercentOutput(mClimber, 0.0));
-    mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox));
+    mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox)); // Uses both sticks and left bumper
     mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, true));
     mIntake.setDefaultCommand(new IntakeSetPercentOutput(mIntake, 0.0));
     mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0));
