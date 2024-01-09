@@ -9,7 +9,7 @@ import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   private final CANSparkMax mTopMotor = new CANSparkMax(Constants.SHOOTER_TOP, MotorType.kBrushed);
-  private final CANSparkMax mBottomMotor = new CANSparkMax(Constants.SHOOTER_TOP, MotorType.kBrushed);
+  private final CANSparkMax mBottomMotor = new CANSparkMax(Constants.SHOOTER_BOTTOM, MotorType.kBrushed);
 
   public Shooter() {
     mTopMotor.restoreFactoryDefaults();
