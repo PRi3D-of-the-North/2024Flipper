@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.ClimberSetPercentOutput;
 import frc.robot.commands.DrivetrainSwerveDrive;
@@ -46,7 +47,7 @@ public class RobotContainer {
     mXbox.b().whileTrue(new ShooterSetPercentOutput(mShooter, 1.0));
     mXbox.x().whileTrue(new ShooterSetPercentOutput(mShooter, -1.0));
 
-    // mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
+    mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
   }
 
   public Command getAutonomousCommand() {
