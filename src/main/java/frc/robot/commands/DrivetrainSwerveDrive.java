@@ -27,9 +27,9 @@ public class DrivetrainSwerveDrive extends Command {
   @Override
   public void execute() {
     /* Get Values, Deadband */
-    double translationVal = MathUtil.applyDeadband(mXbox.getLeftY(), 0.1);
-    double strafeVal = MathUtil.applyDeadband(mXbox.getLeftX(), 0.1);
-    double rotationVal = MathUtil.applyDeadband(mXbox.getRightY(), 0.1);
+    double translationVal = MathUtil.applyDeadband(mXbox.getLeftY(), 0.15);
+    double strafeVal = MathUtil.applyDeadband(mXbox.getLeftX(), 0.15);
+    double rotationVal = MathUtil.applyDeadband(mXbox.getRightY(), 0.15);
 
     /* Drive */
     mDrivetrain.drive(

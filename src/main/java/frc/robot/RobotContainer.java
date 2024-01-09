@@ -47,7 +47,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
-    
+
     mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1));
     mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.4));
 
@@ -59,8 +59,8 @@ public class RobotContainer {
 
     mJoystick.button(9).whileTrue(new ClimberSetPercentOutput(mClimber, -0.2));
     mJoystick.button(10).whileTrue(new ClimberSetPercentOutput(mClimber, 0.2));
-    mJoystick.button(11).whileTrue(new ClimberSetPercentOutput(mClimber, 1.0));
-    mJoystick.button(12).whileTrue(new ClimberSetPercentOutput(mClimber, -1.0));
+    mJoystick.button(11).whileTrue(new ClimberSetPercentOutput(mClimber, -1.0));
+    mJoystick.button(12).whileTrue(new ClimberSetPercentOutput(mClimber, 1.0));
 
     mJoystick.povUp().onTrue(new FlipperSetState(mFlipper, false));
     mJoystick.povDown().onTrue(new FlipperSetState(mFlipper, true));
