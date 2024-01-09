@@ -14,10 +14,9 @@ public class Shooter extends SubsystemBase {
   public Shooter() {
     mTopMotor.restoreFactoryDefaults();
     mBottomMotor.restoreFactoryDefaults();
-    mBottomMotor.follow(mTopMotor);
 
-    mTopMotor.setInverted(false);
-    mBottomMotor.setInverted(false);
+    mTopMotor.setInverted(true);
+    mBottomMotor.setInverted(true);
     mTopMotor.setIdleMode(IdleMode.kBrake);
     mBottomMotor.setIdleMode(IdleMode.kBrake);
     mTopMotor.setSmartCurrentLimit(40);
@@ -28,7 +27,8 @@ public class Shooter extends SubsystemBase {
   public void periodic() {
   }
 
-  public void setPercentOutput(double percentOutput) {
-    mTopMotor.set(percentOutput);
+  public void setPercentOutput(double topPercentOutput, double bottomPercentOutput) {
+    mTopMotor.set(topPercentOutput);
+    mBottomMotor.set(bottomPercentOutput);
   }
 }

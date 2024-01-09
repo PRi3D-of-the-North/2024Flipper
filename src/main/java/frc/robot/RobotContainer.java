@@ -33,7 +33,7 @@ public class RobotContainer {
     mDrivetrain.setDefaultCommand(new DrivetrainSwerveDrive(mDrivetrain, mXbox)); // Uses both sticks and left bumper
     mFlipper.setDefaultCommand(new FlipperSetState(mFlipper, true));
     mIntake.setDefaultCommand(new IntakeSetPercentOutput(mIntake, 0.0));
-    mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0));
+    mShooter.setDefaultCommand(new ShooterSetPercentOutput(mShooter, 0.0, 0.0));
     mWrist.setDefaultCommand(new WristSetState(mWrist, true));
 
     configureButtonBindings();
@@ -46,8 +46,9 @@ public class RobotContainer {
   private void configureButtonBindings() {
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
 
-    mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1));
-    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.4));
+    mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1.0, 1.0));
+    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.4, 0.2));
+    mJoystick.button(7).whileTrue(new ShooterSetPercentOutput(mShooter, -0.4, -0.2));
 
     mJoystick.button(3).whileTrue(new IntakeSetPercentOutput(mIntake, -1));
     mJoystick.button(4).whileTrue(new IntakeSetPercentOutput(mIntake, 1));
