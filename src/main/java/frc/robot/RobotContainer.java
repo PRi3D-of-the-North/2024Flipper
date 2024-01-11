@@ -47,7 +47,7 @@ public class RobotContainer {
     mXbox.start().onTrue(new InstantCommand(() -> mDrivetrain.zeroHeading()));
 
     mJoystick.button(1).whileTrue(new ShooterSetPercentOutput(mShooter, 1.0, 1.0)); // Shooting
-    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.15, 0.35)); // Amp
+    mJoystick.button(2).whileTrue(new ShooterSetPercentOutput(mShooter, 0.15, 0.55)); // Amp
     mJoystick.button(7).whileTrue(new ShooterSetPercentOutput(mShooter, -0.3, -0.15)); // Intaking Source
     mJoystick.button(7).whileTrue(new FlipperSetState(mFlipper, true));
 
